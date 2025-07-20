@@ -1,0 +1,16 @@
+---
+- name: Installer Nginx et personnaliser la page
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Créer la page d'accueil personnalisée
+      copy:
+        content: "<h1>Bienvenue Riwad !</h1>"
+        dest: /var/www/html/index.html
